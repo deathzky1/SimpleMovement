@@ -56,8 +56,107 @@ public class Draw extends JComponent{
         	}
         }
 
+      
+          
+      
 
+         public void attackAnimation(){
+    Thread thread1 = new Thread(new Runnable(){
+      public void run(){
+        for(int ctr = 0; ctr < 4; ctr++){
+          try {
+            if(ctr==3){
+              resource = getClass().getResource("run0.png");
+            }
+            else{
+              resource = getClass().getResource("attack"+ctr+".png");
+            }
+            
+            try{
+              image = ImageIO.read(resource);
+            }
+            catch(IOException e){
+              e.printStackTrace();
+            }
+                repaint();
+                Thread.sleep(100);
+          } catch (InterruptedException e) {
+            e.printStackTrace();
+          }
+        }
+      }
+    });
+    thread1.start();
+  }
 
+  public void bowAnimation(){
+    Thread thread2 = new Thread(new Runnable(){
+      public void run(){
+        for (int ctr =0; ctr < 10; ctr++) {
+          try{
+            if(ctr == 9){
+               resource = getClass().getResource("idle0.png");
+           
+             
+            }
+            else{
+              resource = getClass().getResource("bow"+ctr+".png");
+               
+             
+            }
+
+            try{
+              image = ImageIO.read(resource);
+            }
+            catch(IOException e){
+              e.printStackTrace();
+            } 
+            repaint();
+            Thread.sleep(100);
+          } catch(InterruptedException e){
+            e.printStackTrace();
+          }
+        }
+      }
+    });
+    thread2.start();
+  }
+
+   public void comboAnimation(){
+    Thread thread3 = new Thread(new Runnable(){
+      public void run(){
+        for (int ctr =0; ctr < 15; ctr++) {
+
+          try{
+            if(ctr  == 13){
+                resource = getClass().getResource("idle0.png");
+         
+           }
+            else{
+            
+        resource = getClass().getResource("combo"+ctr+".png");
+
+              
+                
+            }
+
+            try{
+              image = ImageIO.read(resource);
+            }
+            catch(IOException e){
+              e.printStackTrace();
+            }
+            repaint();
+            Thread.sleep(100);
+          } catch(InterruptedException e){
+            e.printStackTrace();
+          }
+        }
+      }
+    });
+    thread3.start();
+  }
+    
       public void moveUP(){
       y = y - 5;	
       repaint();
@@ -82,9 +181,21 @@ public class Draw extends JComponent{
        repaint();
        reloadImage();
       }
-		
-		
+      public void attack(){
+      attackAnimation();
 
+  }
+  public void bowAttack(){
+    bowAnimation();
+  }
+  public void combo(){
+    comboAnimation();
+
+  }
+ 
+    
+
+  
 public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		
@@ -92,5 +203,5 @@ public void paintComponent(Graphics g){
 		
 }
 
-
 }
+
