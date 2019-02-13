@@ -12,19 +12,19 @@ public class MyFrame extends JFrame implements KeyListener {
 
    public void keyPressed(KeyEvent e){
        if(e.getKeyCode() == KeyEvent.VK_UP){
-           drawing.moveUp();
+           drawing.moveUP();
             System.out.println(drawing.x + " , " + drawing.y);
        }
       else if (e.getKeyCode() == KeyEvent.VK_DOWN){
-          drawing.moveDown();
+          drawing.moveDOWN();
           System.out.println(drawing.x + " , " + drawing.y);
       }
       else if (e.getKeyCode() == KeyEvent.VK_LEFT){
-          drawing.moveLeft();
+          drawing.moveLEFT();
           System.out.println(drawing.x + " , " + drawing.y);
       }
       else if (e.getKeyCode() == KeyEvent.VK_RIGHT){
-          drawing.moveRight();
+          drawing.moveRIGHT();
           System.out.println(drawing.x + " , " + drawing.y);
       }
       else if(e.getKeyCode() == KeyEvent.VK_SPACE){
