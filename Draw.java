@@ -1,27 +1,37 @@
 import javax.swing.JComponent;
-import javax.swing.Timer;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.net.URL;
+   import javax.swing.Timer;
+   import java.awt.Color;
+   import java.awt.Graphics;
+   import java.io.IOException;
+   import javax.imageio.ImageIO;
+   import java.awt.image.BufferedImage;
+   import java.net.URL;
+   import java.util.Random;
+
 
 public class Draw extends JComponent{
 
   private BufferedImage image;
+  private BufferedImage backgroundImage;
   private URL resource = getClass().getResource("run/run0.png");
 
 
-    public int x = 30;
+        public int x = 30;
         public int y = 30;
-
+    
         public int state = 0;
 
+        Monster monster1;
+        Monster monster2;
+
         public Draw(){
+          monster1 = new Monster(200, 200);
+          monster2 = new Monster(150,200);
           try{
           image = ImageIO.read(resource);
+          backgroundImage = ImageIO.read(getClass().getResource("background.png"));
           }
+
           catch(IOException e){
             e.printStackTrace();
           }
@@ -158,31 +168,31 @@ public class Draw extends JComponent{
   }
 
   
-    
       public void moveUP(){
       y = y - 5;  
       repaint();
       reloadImage();
-
       }
 
       public  void moveDOWN(){
       y = y + 5;
       repaint();
       reloadImage();
+    
       }
 
        public void moveLEFT(){
       x = x - 5;
       repaint();
       reloadImage();
-
+  
       }
         public void moveRIGHT(){
        x = x + 5;
        repaint();
        reloadImage();
       }
+
       public void attack(){
       attackAnimation();
 
@@ -194,15 +204,28 @@ public class Draw extends JComponent{
     comboAnimation();
 
   }
- 
-    
-
   
 public void paintComponent(Graphics g){
     super.paintComponent(g);
-    
+    g.drawImage(backgroundImage, 0, 0, this);
     g.drawImage(image, x, y, this);
+    g.drawImage(monster1.image, monster1.xPos, monster1.yPos, this);
+    g.drawImage(monster2.image, monster2.xPos, monster2.yPos, this);
+    g.setColor(Color.BLACK);
+    g.fillRect(6, 18, 264, 34);
+    g.setColor(Color.DARK_GRAY);
     
+    //HealthBar
+    g.setColor(Color.GREEN);
+    g.fillRect(50, 25, 200, 10);
+
+   
+   
+   
+
+
 }
 
 }
+
+

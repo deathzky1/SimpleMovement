@@ -2,12 +2,14 @@ import javax.swing.JFrame;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 
+
 public class MyFrame extends JFrame implements KeyListener {
 
   Draw drawing;
 
   public MyFrame(){
       this.drawing = new Draw();
+    
   }
 
    public void keyPressed(KeyEvent e){
@@ -63,6 +65,6 @@ else if(e.getKeyCode() == KeyEvent.VK_J){
       gameFrame.getContentPane().add(gameFrame.drawing);
       gameFrame.addKeyListener(gameFrame);
 
-}
 
-  }
+}
+}
